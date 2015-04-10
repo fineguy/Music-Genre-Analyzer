@@ -18,16 +18,21 @@ urls = list()            # list of their urls
 for genre in genres:
     try:
         os.mkdir(genre)
-        print 'Folder ' + genre + ' created'
+        print "Folder '" + genre + "' created"
     except OSError:
-        print 'Folder ' + genre + ' already exists'
+        print "Folder '" + genre + "' already exists"
+
+# Get users account info
+name = raw_input('username: ')
+pwd = raw_input('password: ')
 
 # Create a new client that uses the user credentials oauth flow
 me = soundcloud.Client(client_id='556b2d1b8a02102fa1f7ad8c1ef60ebb',
                            client_secret='b55ed8f5c0f81b8d8b3c637c1d4b33fb',
-                           username='pyany',
-                           password='5Onxqz2ADT')
+                           username=name,
+                           password=pwd)
                            
+
 # Making sure that song names contain only valid characters      
 allowed = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789-_()@#$&+="
 def get_title(title):
@@ -38,7 +43,7 @@ for user in me.get('/me/followings'):
     id = user.id
     username = user.username
     print 'Collecting data from ' + username
-    
+    '''
     # Collect tracks from playlists
     print 'Collecting playlists ...'
     for playlist in me.get('/users/'+str(id)+'/playlists'):
@@ -83,9 +88,10 @@ for user in me.get('/me/followings'):
                 print "'" + title + "' was already downloaded"
 
 
+print 'Starting download ...'
 # Download tracks
 for x in range(len(urls)):
-    print 'Starting download ...'
     wget.download(urls[x], files[x])
     print files[x].split('/')[1] + ' successfully downloaded'
         
+'''
