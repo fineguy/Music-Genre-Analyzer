@@ -43,7 +43,7 @@ for user in me.get('/me/followings'):
     id = user.id
     username = user.username
     print 'Collecting data from ' + username
-    '''
+    
     # Collect tracks from playlists
     print 'Collecting playlists ...'
     for playlist in me.get('/users/'+str(id)+'/playlists'):
@@ -93,5 +93,3 @@ print 'Starting download ...'
 for x in range(len(urls)):
     wget.download(urls[x], files[x])
     print files[x].split('/')[1] + ' successfully downloaded'
-        
-'''
