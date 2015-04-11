@@ -11,7 +11,7 @@ from sklearn import cross_validation
 from sklearn import svm
 
 # loads data
-data = sio.loadmat('data2.mat')
+data = sio.loadmat('data.mat')
 X = data['X']
 contents_y = data['y']
 
@@ -25,7 +25,7 @@ for i in range(len(contents_y[0])):
 X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.4, random_state=1)
 
 # create a Support Vector Machine classifier
-clf = svm.SVC()
+clf = svm.SVC(kernel='poly', degree=4)
 clf.fit(X_train, y_train)
 count = 0       # counter for correctly predicted values
 
