@@ -27,8 +27,8 @@ name = raw_input('username: ')
 pwd = raw_input('password: ')
 
 # Create a new client that uses the user credentials oauth flow
-me = soundcloud.Client(client_id='556b2d1b8a02102fa1f7ad8c1ef60ebb',
-                           client_secret='b55ed8f5c0f81b8d8b3c637c1d4b33fb',
+me = soundcloud.Client(client_id='CLIENT_ID',
+                           client_secret='CLIENT_SECRET',
                            username=name,
                            password=pwd)
                            
